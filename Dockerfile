@@ -18,8 +18,8 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Install depended packages for youtube-dl
-RUN apt-get -y install curl python
+# Install depended packages for yt-dlp
+RUN apt-get -y install curl python3
 
 # Install yt-dlp
 # https://github.com/yt-dlp/yt-dlp#installation
