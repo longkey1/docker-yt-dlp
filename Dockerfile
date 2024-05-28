@@ -19,7 +19,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # Install depended packages for yt-dlp
-RUN apt-get -y install curl python3
+RUN apt-get -y install curl python3 ffmpeg
 
 # Install yt-dlp
 # https://github.com/yt-dlp/yt-dlp#installation
