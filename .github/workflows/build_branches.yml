@@ -16,7 +16,7 @@ jobs:
           echo "TZ=Asia/Tokyo" >> ${GITHUB_ENV}
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set updated date
         run: |
@@ -27,12 +27,12 @@ jobs:
           envsubst '${UPDATED}' < README.md.dist > README.md
 
       - name: Commit & Push
-        uses: stefanzweifel/git-auto-commit-action@v4.2.0
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update README by auto commit"
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
 
