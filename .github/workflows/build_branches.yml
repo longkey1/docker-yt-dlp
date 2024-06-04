@@ -23,9 +23,6 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
 
-      - name: Build branches
-        run: make build
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -47,3 +44,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update README by auto commit"
+
+      - name: Build branches
+        run: make build
