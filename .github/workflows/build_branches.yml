@@ -21,7 +21,7 @@ jobs:
         id: generate-token
         with:
           app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_SECRET }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Build branches
         run: make build
