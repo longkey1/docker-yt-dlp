@@ -23,14 +23,14 @@ jobs:
       - name: Set updated date
         run: echo "UPDATED=$(date --iso-8601=seconds)" >> ${GITHUB_ENV}
 
+      - name: Update README
+        run: envsubst '${UPDATED}' < README.md.dist > README.md
+
       - name: Setup git
         run: |
           git config --global user.name "longkey1"
           git config --global user.email "longkey1@users.noreply.github.com"
           git fetch --all
-
-      - name: Update README
-        run: envsubst '${UPDATED}' < README.md.dist > README.md
 
       - name: Commit & Push
         uses: stefanzweifel/git-auto-commit-action@v5
