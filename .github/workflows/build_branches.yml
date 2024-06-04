@@ -17,8 +17,19 @@ jobs:
         run: |
           echo "TZ=Asia/Tokyo" >> ${GITHUB_ENV}
 
+      - uses: actions/create-github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_SECRET }}
+
+      - name: Build branches
+        run: make build
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Set updated date
         run: echo "UPDATED=$(date --iso-8601=seconds)" >> ${GITHUB_ENV}
@@ -36,6 +47,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update README by auto commit"
-
-      - name: Build branches
-        run: make build
