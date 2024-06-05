@@ -10,8 +10,6 @@ on:
 jobs:
   make_branches:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Set timezone
         run: |
@@ -22,6 +20,9 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: test
+        run: echo "${{ steps.generate_token.outputs.token }}"
 
       - name: Checkout
         uses: actions/checkout@v4
