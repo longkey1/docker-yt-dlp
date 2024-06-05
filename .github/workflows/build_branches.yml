@@ -16,18 +16,18 @@ jobs:
           echo "TZ=Asia/Tokyo" >> ${GITHUB_ENV}
 
       - uses: actions/create-github-app-token@v1
-        id: generate-token
+        id: app-token
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: test
-        run: echo "${{ steps.generate_token.outputs.token }}"
+        run: echo "${{ steps.app-token.outputs.token }}"
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ steps.generate_token.outputs.token }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set updated date
         run: echo "UPDATED=$(date --iso-8601=seconds)" >> ${GITHUB_ENV}
