@@ -35,6 +35,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update README by auto commit"
+          pull: 'true'
 
       - uses: actions/create-github-app-token@v1
         id: app-token
